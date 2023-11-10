@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'img'> & {subtitle: string};
+
+const { src, class: className, subtitle, ...props } = Astro.props;
+
+---
+
+<img src={src} class:list={[className]} {...props}>
+<p>{subtitle}</p>

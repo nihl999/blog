@@ -1,0 +1,65 @@
+---
+title: 'What is this?'
+description: 'Who am i, and why i want to start blogging.'
+pubDate: '11-06-2023'
+heroImage: '/blog-placeholder-3.jpg'
+author: 'Arthur' 
+---
+
+import MidPostImage from '../../components/MidPostImage.astro'
+import Code from 'astro/components/Code.astro'
+
+# First off, who am I?
+Hi, my name is Arthur and I'm a student of Systems Analysis and Development in Brazil.
+I work full-time as a Junior Software Engineer and I've a great passion for programming, from web applications to microchip development.
+Since I started to move away from tutorials and leaned more towards documentation, I always found blogs something
+amazing, as i got a lot of help and ideas from other people's experiences.
+So I thought, why not do that too? I've always loved "teaching" (you can't say I've really taught, but I've tried, haha) and talking to lots of people, sharing my experiences and roadblocks,
+~~and to do a little of show off~~.
+
+# Why this blog?
+Like I said, I just wanted to share my experiences, the things I've studied, and my point of view on what helped me understand these things, and if I'm lucky, help you too in this process.
+
+# References
+Before I explain how this blog was made, the technologies involved and why some decisions were made, I'd like to share some of the work that inspired me to come up with this idea and from
+which I took some of the design.
+
+# Custom components
+When writing this post, some Markdown limitations already came into scene, like the lack of image
+subtitles. And that was my first custom component, a simple subtext below the images.
+
+# VIM
+Well, actually i use *Neovim* so my configuration is all in `LUA files` ~~(lesgo brazil)~~, but i think the setup used for `astro` and
+`mdx` files can be used normally with Vim, you just need to rewrite it to `vimscript` and use a compatible plugin manager.  
+First, in my *Neovim* installation, the `mdx` files weren't recognized as `markdown.mdx`, so had to do this manually.
+Ok, there are many ways to do this, and i will show you 3 ways: 
+
+### Vimscript
+Add this snippet to your `/.vimrc`
+```vimscript
+au BufReadPost *.mdx set syntax=markdown.mdx
+```
+What this does? It creates an autocommand, kind of a callback, for the BufReadPost event who is called when starting to edit a existing file. It matches the `*.mdx` pattern and set the buffer syntax type to
+`markdown.mdx`. Straightforward no?
+
+### Handmade Lua
+Add this snippet to your `init.lua` (generally under `~/.config/nvim` on unix)
+```lua
+vim.api.nvim_create_autocmd({ "User" }, {
+    pattern = ".mdx",
+    callback = function() 
+        vim.filetype.add({
+        extension = {
+            mdx = "markdown.mdx",
+            },
+        })
+    end
+})
+```
+### And my choice, `Filetype.nvim`
+
+<MidPostImage src='/blog-placeholder-3.jpg' subtitle='Bah' />
+LINK PRO VIC17
+LINK PRO GTA5OPTIMIZACAO
+LINK PRO RAYTRACING IN A WEEKEND
+LINK PRO RAYCASTING

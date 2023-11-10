@@ -1,41 +1,40 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_MAX_WIDTH } from '../consts'
 ---
 
+<div class='container'>
 <header>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
+        <p>{SITE_DESCRIPTION}</p>
 </header>
-<style>
-	header {
+</div>
+<style define:vars={{ SITE_MAX_WIDTH }}>
+	
+
+    header {
 		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+        margin-top: 2em;
+        padding: 0;
+        width: var(--SITE_MAX_WIDTH);
+        display: flex;
+        justify-content: center;
+        gap: 0.2em;
 	}
 	h2 {
 		margin: 0;
 		font-size: 1em;
 	}
 
-	h2 a,
-	h2 a.active {
+	a {
 		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
+	    color: var(--green);
+        font-size: 1.6em;
+    }
+
+    p{
+        color: var(--pretty-green);
+        font-size: 0.7em;
+    }
 
 </style>
