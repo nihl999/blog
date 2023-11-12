@@ -1,0 +1,33 @@
+---
+import Icon from "astro-icon";
+---
+
+<div class="social-links">
+    <a href="https://www.linkedin.com/in/nihl999-lorhan/" target="_blank">
+        <span class="sr-only">Connect to me on linkedin</span>
+        <Icon name="jam:linkedin" />
+    </a>
+    <a href="https://github.com/nihl999" target="_blank">
+        <span class="sr-only">Go to Arthur's GitHub repo</span>
+        <Icon name="jam:github" width="32" height="32" />
+    </a>
+</div>
+<style>
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+    }
+    .social-links a {
+        text-decoration: none;
+        color: rgb(var(--gray));
+    }
+    .social-links a:hover {
+        color: rgb(var(--gray-dark));
+    }
+    [astro-icon] {
+        width: 24px;
+        height: 24px;
+        color: var(--green);
+    }
+</style>

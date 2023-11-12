@@ -1,0 +1,23 @@
+---
+
+---
+
+<div id="page-base">
+    <div id="container">
+        <slot />
+    </div>
+</div>
+<style>
+    #page-base {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #container {
+        width: 720px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>

@@ -1,40 +1,62 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_MAX_WIDTH } from '../consts'
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
-<div class='container'>
 <header>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-        <p>{SITE_DESCRIPTION}</p>
+    <div id="header-titles">
+        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <p set:html={SITE_DESCRIPTION} />
+    </div>
+    <div id="header-subtitles">
+        <div id="categories">
+            <nav>Blog</nav>
+            <nav>Portfolio</nav>
+        </div>
+        <SocialLinks />
+    </div>
 </header>
-</div>
-<style define:vars={{ SITE_MAX_WIDTH }}>
-	
-
+<style>
     header {
-		margin: 0;
-        margin-top: 2em;
+        margin: 0;
+        margin-top: 3em;
+        margin-bottom: 7em;
         padding: 0;
-        width: var(--SITE_MAX_WIDTH);
+        width: 100%;
+        height: 3em;
+    }
+    #header-titles {
         display: flex;
-        justify-content: center;
-        gap: 0.2em;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	a {
-		text-decoration: none;
-	    color: var(--green);
+        /* justify-content: center; */
+        height: 2em;
+        gap: 0.7em;
+    }
+    #header-subtitles {
+        width: 100%;
+        height: 1em;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1em;
+    }
+    #categories {
+        display: flex;
+        font-size: 0.7em;
+        color: var(--green);
+        gap: 1em;
+    }
+    h2 {
+        margin: 0;
+        font-size: 1em;
+    }
+    a {
+        text-decoration: none;
+        color: var(--green);
         font-size: 1.6em;
     }
 
-    p{
+    p {
         color: var(--pretty-green);
         font-size: 0.7em;
+        padding-top: 1em;
     }
-
 </style>
