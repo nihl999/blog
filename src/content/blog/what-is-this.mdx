@@ -13,28 +13,114 @@ author: 'Arthur'
 ---
 
 import MidPostImage from '../../components/MidPostImage.astro'
-import Code from 'astro/components/Code.astro'
 
 # First off, who am I?
-Hi, my name is Arthur and I'm a student of Systems Analysis and Development in Brazil.
-I work full-time as a Junior Software Engineer and I've a great passion for programming, from web applications to microchip development.
-Since I started to move away from tutorials and leaned more towards documentation, I always found blogs something
-amazing, as i got a lot of help and ideas from other people's experiences.
-So I thought, why not do that too? I've always loved "teaching" (you can't say I've really taught, but I've tried, haha) and talking to lots of people, sharing my experiences and roadblocks,
-~~and to do a little of show off~~.
+Hi, my name is Arthur Lorhan and I'm a brazilian student of Systems Analysis and Development.
+I work full-time as a Junior Software Engineer and I've a great passion for programming, from web applications to graphics development.
+My journey in programming started early, as from my 6 years i got a "Polystation" (a SNES emulator with PS1 face) and was
+really curious how could it connect to a TV and display some characters i could control.
+It expandend even more as living in a not very wealth family, on a ***"third world country"***, i had to dig how to fix my computer when eventually i downloaded a virtual gpu,
+or 
+
 
 # Why this blog?
+Since I started to move away from tutorials and leaned more towards documentation, I always found blogs something
+amazing, as i got a lot of help and ideas from other people's experiences.
+So I thought, why not do that too? I've always loved "teaching" (you can't say I've really taught, but I've tried, haha) and talking to lots of people, sharing my experiences and roadblocks
 Like I said, I just wanted to share my experiences, the things I've studied, and my point of view on what helped me understand these things, and if I'm lucky, help you too in this process.
+
 
 # References
 Before I explain how this blog was made, the technologies involved and why some decisions were made, I'd like to share some of the work that inspired me to come up with this idea and from
 which I took some of the design.
 
-# Custom components
-When writing this post, some Markdown limitations already came into scene, like the lack of image
-subtitles. And that was my first custom component, a simple subtext below the images.
+### - 1000 Bunnies [victor's tech art blog]
+<MidPostImage src="/what-is-this/vic-17-fullscr.jpg" subtitle="1000 Bunnies [victor's tech art blog]" anchor="https://viclw17.github.io/"/>
+I really like the centered approach it took, and thought it has a quite beautiful color scheme, so my idea initially was to use Lagrange (the jekyll theme used) too, but as you'll see in next points, 
+i went with the `Astro`  framework, so i just made mine from scratch.
 
-# VIM
+### - nee.lv 
+<MidPostImage src="/what-is-this/nee-lv.jpg" subtitle="nee.lv [t0st blog]" anchor="https://nee.lv/"/>
+Needless to say, i think grey/green color scheme is awesome, and as i'm more of a dark mode guy, it really pleased my eyes and soul. Not only this, but the simplicity in design too hits a good
+place.  
+
+Both these blogs not only gave me ideas for the design, but encouraged me to start writing my path in programming, as i took good advice and great explanations when trying to implement the
+**Raytracing in a Weekend** book from 1000 Bunnies.
+
+Of course, there is more, more than i even can count, not only blogs, but books, teachers, youtubers, so i will end it here, but i really want to express my thanks to them.
+
+# Technologies
+So, finally for the meat, what was used making this and why it was choosen:
+
+### Astro
+<MidPostImage src="/what-is-this/astro.webp" subtitle="Astro Framework" anchor="https://astro.build/"/>
+
+As itself says:   
+`Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between.`  
+That's what it does and why it was chosen. As this is a blog, i wanted to generate static webpages without having to write the articles in html, or setting complicated servers to render the pages beforehand.
+
+At first i saw `Jekyll`, as the `Lagrange` theme was made for it, and it empowers github pages. However i never had any contact with Ruby, and didn't want to prorrogate more developing the blog for learning it.  
+So i had to search more options, and this was when i found `Next.js`, `Gatsby` and `Astro`
+I will skip explaining Gatsby and Next, but the primary reason i went with Astro was because of it's simplicity, i needed only 2 days to understand a project structure and how to start coding, and that i didn't have
+to write `React.js` (Not that i hate it ~~as i almost am~~, but it was just a big overhead for simple text centered pages)
+
+### Neovim
+<MidPostImage src="/what-is-this/neovim.jpg" subtitle="The GOAT editor" anchor="https://github.com/neovim/neovim"/>
+
+I pretend in doing another post explaining how to create a good base config and explaining some intricacies and nuances of this editor. What are LSPs, what are Treesitter, why you need them, do
+you really need them? What is Telescope, Harpoon, Mason, Netrw, Terminal vs Console, and more.
+
+However, for now let me just explain some basics. First, i am still a VSCode user, as i can't use Linux nor install Neovim without a lot of headache on my work. I already don't do any personal
+projects on it (don't even have it installed in my personal pc) and am planning to start use the Vim extension, but for now, work is in it.  
+So, why i'm going away from it for my personal projects? First, because i really hate how C and C++ programming was slow on it, the Intellisense was very slow, it was cumbersome to configure the
+C++ Extension, and most importantly, **it wasn't cool.**
+No, really, i can't see my background when coding, my Windows Terminal had Zsh running, was really pretty, and in vscode my shell was ugly, it has too much tabs, buttons, bars, i just wanted
+to try something more clean, more as i had a `1360x768` monitor.
+
+<MidPostImage src="/what-is-this/4coder.png" subtitle="4coder, another GOAT editor" anchor="https://mr-4th.itch.io/4coder"/>
+
+So, i had used `4coder` for some months in my little C projects, and really liked the flow, ~~i still miss the mark based cursor~~, so i wanted to give it another try now, but when i went
+to download and find how i did my previous setup, i learned that it was getting discontinued by Mr. 4th and was open to fork from the community.
+As i'm not really a magnanimous C++ coder, much more on that considerably huge codebase, i went for something still mantained, with a better documentation, easier apis, and a gigantic plugin
+ecosystem.  
+And that's why i'm here.
+
+# Astro
+
+Astro is really easy to setup, i found the structure quite easy, at least for this simple blog, and produces automatically the html from `markdown` and `mdx`.  
+First, we need to install astro with `npm`, `yarn` or `pnpm`.  
+As i'm already trying new things, i thought why not go with **pnpm**.  
+First we run the pnpm create in some terminal.
+```zsh
+pnpm create astro@latest
+```
+And it will run the astro installer, asking some basic questions, as where to put the project, the desired package manager, if you will use typescript, ...  
+I did some research before, and decided to go with the blog template, so my command was 
+```zsh
+pnpm create astro@latest --template blog
+```
+The structure generated is similar to this:
+
+<MidPostImage src="/what-is-this/basic-structure-astro.jpg" subtitle="This blog structure"/>
+
+As you see, here we have a public folder, a src with components, content, layouts, pages, styles, and some configuration, and astro config on root.
+
+### Public folder
+This is where all your static files go, you can put css, js, html, fonts, images. It's not recommended however and probably not very useful to put the first three there, as we will use 
+Astro's capabilities to generate the html from markdown, using Astro components and internal css. But it's very good for putting images and fonts, and that's where i use it.
+I have inside public, the `fonts` folder, where i hold PT Serif and Quattroccento Sans, and one folder with the same name as one blog post with all images used inside.
+
+### Components
+In here goes all reusable bits of page we have, like the header and footer, the formatted date, a container setting the max size of the page, and even smaller components, as the social links
+grouped used in the header and footer. The components don't need to be necessarilly in the body, like the BaseHead component that sets page title, some metadatas, preload the fonts, etc.
+
+### Layouts
+This is where 
+
+
+
+
+# Neovim for astro
 Well, actually i use *Neovim* so my configuration is all in `LUA files` ~~(lesgo brazil)~~, but i think the setup used for `astro` and
 `mdx` files can be used normally with Vim, you just need to rewrite it to `vimscript` and use a compatible plugin manager.  
 First, in my *Neovim* installation, the `mdx` files weren't recognized as `markdown.mdx`, so had to do this manually.
@@ -63,6 +149,14 @@ vim.api.nvim_create_autocmd({ "User" }, {
 })
 ```
 ### And my choice, `Filetype.nvim`
+
+
+# Custom components
+When writing this post, some Markdown limitations already came into scene, like the lack of image
+subtitles. And that was my first custom component, a simple subtext below the images.
+
+
+
 
 LINK PRO VIC17
 LINK PRO GTA5OPTIMIZACAO

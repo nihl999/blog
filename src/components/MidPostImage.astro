@@ -1,11 +1,37 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<'img'> & {subtitle: string};
+type Props = HTMLAttributes<"img"> & { subtitle: string; anchor?: string };
 
-const { src, class: className, subtitle, ...props } = Astro.props;
-
+const { src, class: className, subtitle, anchor, ...props } = Astro.props;
 ---
 
-<img src={src} class:list={[className]} {...props}>
-<p>{subtitle}</p>
+<div class="mid-post-image-container">
+    <img src={src} class:list={[className]} {...props} />
+    <p>{anchor ? <a target = "_blank", href={anchor}>{subtitle}</a> : subtitle}</p>
+</div>
+<style>
+    .mid-post-image-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        width: 98%;
+        height: auto;
+        border-radius: 0.1em;
+        box-shadow: 0px 0px 6px 1px var(--pretty-green);
+    }
+    p{
+        color: var(--pretty-purple);
+        font-size: 0.8em;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    a:hover{
+        color: var(--purple);
+      }
+</style>

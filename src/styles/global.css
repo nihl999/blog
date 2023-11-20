@@ -75,6 +75,10 @@ code > span {
   font-style: normal;
   background: none;
 }
+.astro-code {
+  padding: 1em;
+  border-radius: 0.5em;
+}
 .astro-code code {
   background: none;
 }
